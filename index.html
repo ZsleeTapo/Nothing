@@ -6,17 +6,21 @@
     <title>My Personal Website</title>
     <style>
         /* 基本样式 */
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box; /* 确保 padding 和 border 不影响元素尺寸 */
+        }
+
+        html, body {
             margin: 0;
             padding: 0;
+            height: 100%; /* 设置为100%高度 */
+            width: 100%;  /* 设置为100%宽度 */
             background-color: #f4f4f9;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center; /* 使内容居中 */
             justify-content: flex-start;
-            height: 100vh;
         }
 
         h1 {
@@ -63,12 +67,13 @@
         /* 页面容器 */
         .container {
             width: 80%;
-            margin-top: 20px;
+            height: 100%;  /* 设置为100%高度 */
             position: relative;
-            height: 100%;  /* 修改此处为 100% */
             display: flex;
             flex-direction: column;
-            align-items: center; /* 确保内容居中 */
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;  /* 隐藏多余部分 */
         }
 
         /* 内容部分的基本样式 */
@@ -92,11 +97,6 @@
         .inactive {
             transform: translateX(-100%); /* 向左滑动出屏幕 */
             opacity: 0;
-        }
-
-        /* 为了强制浏览器优化动画 */
-        .content-section {
-            will-change: transform, opacity;
         }
 
     </style>
@@ -128,7 +128,7 @@
     <!-- 联系方式部分 -->
     <div id="contact" class="content-section">
         <h2>Contact</h2>
-        <p>If you want to connect or have any questions, feel free to email me.</p>
+        <p>If you want to connect or have any questions, feel free to email me</p>
         <p><a href="https://github.com/zsleetapo" target="_blank" class="btn">Visit My GitHub</a></p>
     </div>
 </div>
