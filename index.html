@@ -73,8 +73,11 @@
         /* 内容部分的基本样式 */
         .content-section {
             width: 100%;
-            opacity: 0;
-            transform: translateX(100%);
+            position: absolute; /* 所有内容部分堆叠在同一位置 */
+            top: 0;
+            left: 0;
+            opacity: 0; /* 初始时透明 */
+            transform: translateX(100%); /* 向右滑出 */
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
@@ -124,7 +127,7 @@
     <!-- 联系方式部分 -->
     <div id="contact" class="content-section">
         <h2>Contact</h2>
-        <p>If you want to connect or have any questions, feel free to <a href="mailto:zsleetapo@example.com">email me</a>.</p>
+        <p>If you want to connect or have any questions, feel free to email me</a>.</p>
         <p><a href="https://github.com/zsleetapo" target="_blank" class="btn">Visit My GitHub</a></p>
     </div>
 </div>
