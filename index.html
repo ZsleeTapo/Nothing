@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Stylish Page</title>
+    <title>Nothing</title>
     
     <!-- 添加 favicon 图标 -->
     <link rel="icon" href="logo.png" type="image/png">
@@ -22,6 +22,12 @@
             background-color: #f4f4f9;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden; /* 防止水平滚动条 */
+            min-height: 100vh;  /* 防止空白区域 */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
         }
 
         h1, h2 {
@@ -35,6 +41,7 @@
             color: white;
             padding: 20px;
             text-align: center;
+            width: 100%;
         }
 
         /* 导航栏部分样式 */
@@ -44,6 +51,7 @@
             justify-content: center;
             align-items: center;
             padding: 10px 0;
+            width: 100%;
         }
 
         #navbar a {
@@ -67,6 +75,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative; /* 使所有内容部分能够叠加 */
+            height: 100%; /* 保证内容区域不超出屏幕 */
         }
 
         .content-section {
@@ -74,19 +84,22 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateX(100%);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;  /* 初始时不可见 */
+            opacity: 0; /* 初始时透明 */
+            transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
         }
 
         .content-section.active {
-            transform: translateX(0);
+            visibility: visible;
             opacity: 1;
-        }
-
-        .content-section.inactive {
-            transform: translateX(-100%);
-            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ease-in-out;
         }
 
         /* 美化按钮 */
@@ -142,12 +155,10 @@
         // 将所有内容部分设置为 'inactive'（隐藏）
         sections.forEach(function(section) {
             section.classList.remove('active');
-            section.classList.add('inactive');
         });
 
         // 显示当前选中的部分
         var activeSection = document.getElementById(sectionId);
-        activeSection.classList.remove('inactive');
         activeSection.classList.add('active');
     }
 
