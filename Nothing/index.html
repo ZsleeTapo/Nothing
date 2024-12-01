@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 加载头部内容 -->
+    <div id="header"></div>
+</head>
+<body>
+
+<!-- 导航栏部分 -->
+<div id="navbar"></div>
+
+<!-- 页面内容部分 -->
+<div class="container" id="content-container">
+    <!-- 通过 JavaScript 动态加载内容部分 -->
+</div>
+
+<script>
+    // JavaScript 控制内容显示和隐藏
+    function showSection(sectionId) {
+        // 获取所有内容部分
+        var sections = document.querySelectorAll('.content-section');
+        // 将所有内容部分设置为 'inactive'（隐藏）
+        sections.forEach(function(section) {
+            section.classList.remove('active');
+            section.classList.add('inactive');
+        });
+
+        // 显示当前选中的部分
+        var activeSection = document.getElementById(sectionId);
+        activeSection.classList.remove('inactive');
+        activeSection.classList.add('active');
+    }
+
+    // 动态加载 HTML 内容
+    function loadContent() {
+        // 加载 header.html
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        // 加载 navbar.html
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('navbar').innerHTML = data);
+
+        // 加载其他部分
+        fetch('about.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('content-container').innerHTML += data);
+
+        fetch('work.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('content-container').innerHTML += data);
+
+        fetch('contact.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('content-container').innerHTML += data);
+    }
+
+    // 页面加载时执行
+    window.onload = loadContent;
+</script>
+
+</body>
+</html>
