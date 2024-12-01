@@ -75,21 +75,32 @@
                 width: 80%;
                 margin: 0 auto;
                 padding-top: 20px;
+                position: relative;
+                overflow: hidden;
+                height: auto;
             }
 
-            /* 隐藏的内容 */
+            /* 内容部分的基本样式 */
             .content-section {
-                display: none;
+                position: absolute;
+                top: 0;
+                left: 100%; /* 初始状态位于右侧之外 */
+                right: 0;
                 opacity: 0;
-                transform: translateY(20px); /* 初始位置稍微向下 */
-                transition: opacity 0.5s ease, transform 0.5s ease;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+                width: 100%;
             }
 
-            /* 显示的内容，带过渡动画 */
+            /* 内容部分显示时 */
             .active {
-                display: block;
+                transform: translateX(0); /* 向左滑动到正确的位置 */
                 opacity: 1;
-                transform: translateY(0); /* 动画过渡到正常位置 */
+            }
+
+            /* 内容部分隐藏时 */
+            .inactive {
+                transform: translateX(-100%); /* 向左滑动出屏幕 */
+                opacity: 0;
             }
 
         </style>
@@ -131,12 +142,15 @@
             function showSection(sectionId) {
                 // 获取所有内容部分
                 var sections = document.querySelectorAll('.content-section');
-                // 隐藏所有内容部分
+                // 将所有内容部分设置为 'inactive'（隐藏）
                 sections.forEach(function(section) {
                     section.classList.remove('active');
+                    section.classList.add('inactive');
                 });
+
                 // 显示当前选中的部分
                 var activeSection = document.getElementById(sectionId);
+                activeSection.classList.remove('inactive');
                 activeSection.classList.add('active');
             }
         </script>
