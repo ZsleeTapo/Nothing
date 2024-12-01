@@ -1,159 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Personal Website</title>
-        <style>
-            /* 基本样式 */
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f9;
-                color: #333;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing</title>
+    <style>
+        /* 基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
 
-            h1 {
-                background-color: #4CAF50;
-                color: white;
-                padding: 20px;
-                text-align: center;
-                margin: 0;
-            }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
 
-            h2 {
-                color: #333;
-            }
+        h2 {
+            color: #333;
+        }
 
-            p {
-                font-size: 18px;
-                line-height: 1.6;
-                margin: 20px;
-            }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px;
+        }
 
-            /* 导航栏样式 */
-            nav {
-                background-color: #333;
-                overflow: hidden;
-                text-align: center;
-            }
+        /* 导航栏样式 */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+        }
 
-            nav a {
-                display: inline-block;
-                padding: 14px 20px;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-            }
+        nav a {
+            display: inline-block;
+            padding: 14px 20px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
 
-            nav a:hover {
-                background-color: #ddd;
-                color: black;
-            }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
-            /* 按钮样式 */
-            .btn {
-                background-color: #4CAF50;
-                color: white;
-                padding: 10px 20px;
-                text-align: center;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-                border-radius: 5px;
-                text-decoration: none;
-                display: inline-block;
-            }
+        /* 页面容器 */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+        }
 
-            .btn:hover {
-                background-color: #45a049;
-            }
+        /* 内容部分的基本样式 */
+        .content-section {
+            position: absolute;
+            top: 0;
+            left: 100%; /* 初始状态位于右侧之外 */
+            right: 0;
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            width: 100%;
+        }
 
-            /* 页面容器 */
-            .container {
-                width: 80%;
-                margin: 0 auto;
-                padding-top: 20px;
-                position: relative;
-                overflow: hidden;
-                height: auto;
-            }
+        /* 内容部分显示时 */
+        .active {
+            transform: translateX(0); /* 向左滑动到正确的位置 */
+            opacity: 1;
+        }
 
-            /* 内容部分的基本样式 */
-            .content-section {
-                position: absolute;
-                top: 0;
-                left: 100%; /* 初始状态位于右侧之外 */
-                right: 0;
-                opacity: 0;
-                transition: transform 0.5s ease, opacity 0.5s ease;
-                width: 100%;
-            }
+        /* 内容部分隐藏时 */
+        .inactive {
+            transform: translateX(-100%); /* 向左滑动出屏幕 */
+            opacity: 0;
+        }
 
-            /* 内容部分显示时 */
-            .active {
-                transform: translateX(0); /* 向左滑动到正确的位置 */
-                opacity: 1;
-            }
+        /* 为了强制浏览器优化动画 */
+        .content-section {
+            will-change: transform, opacity;
+        }
 
-            /* 内容部分隐藏时 */
-            .inactive {
-                transform: translateX(-100%); /* 向左滑动出屏幕 */
-                opacity: 0;
-            }
+    </style>
+</head>
+<body>
 
-        </style>
-    </head>
-    <body>
+<!-- 导航栏 -->
+<nav>
+    <a href="javascript:void(0);" onclick="showSection('about')">About Me</a>
+    <a href="javascript:void(0);" onclick="showSection('work')">What I'm Working On</a>
+    <a href="javascript:void(0);" onclick="showSection('contact')">Contact</a>
+</nav>
 
-        <!-- 导航栏 -->
-        <nav>
-            <a href="javascript:void(0);" onclick="showSection('about')">About Me</a>
-            <a href="javascript:void(0);" onclick="showSection('work')">What I'm Working On</a>
-            <a href="javascript:void(0);" onclick="showSection('contact')">Contact</a>
-        </nav>
+<div class="container">
+    <h1>Hey, I'm ZsleeTapo</h1>
 
-        <div class="container">
-            <h1>Hey, I'm ZsleeTapo</h1>
+    <!-- About Me 部分 -->
+    <div id="about" class="content-section active">
+        <h2>About Me</h2>
+        <p>I am just a college student, exploring the world of technology and science. I'm passionate about learning new things and continuously improving myself.</p>
+    </div>
 
-            <!-- About Me 部分 -->
-            <div id="about" class="content-section active">
-                <h2>About Me</h2>
-                <p>I am just a college student, exploring the world of technology and science. I'm passionate about learning new things and continuously improving myself.</p>
-            </div>
+    <!-- What I'm Working On 部分 -->
+    <div id="work" class="content-section">
+        <h2>What I'm Working On</h2>
+        <p>I'm currently obsessed with AI and machine learning. I'm working on personal projects and learning more about deep learning, neural networks, and natural language processing (NLP).</p>
+    </div>
 
-            <!-- What I'm Working On 部分 -->
-            <div id="work" class="content-section">
-                <h2>What I'm Working On</h2>
-                <p>I'm currently obsessed with AI and machine learning. I'm working on personal projects and learning more about deep learning, neural networks, and natural language processing (NLP).</p>
-            </div>
+    <!-- 联系方式部分 -->
+    <div id="contact" class="content-section">
+        <h2>Contact</h2>
+        <p>If you want to connect or have any questions, feel free to <a href="mailto:zsleetapo@example.com">email me</a>.</p>
+        <p><a href="https://github.com/zsleetapo" target="_blank" class="btn">Visit My GitHub</a></p>
+    </div>
+</div>
 
-            <!-- 联系方式部分 -->
-            <div id="contact" class="content-section">
-                <h2>Contact</h2>
-                <p>If you want to connect or have any questions, feel free to email me</a>.</p>
-                <p><a href="https://github.com/zsleetapo" target="_blank" class="btn">Visit My GitHub</a></p>
-            </div>
-        </div>
+<script>
+    // JavaScript 控制内容显示和隐藏
+    function showSection(sectionId) {
+        // 获取所有内容部分
+        var sections = document.querySelectorAll('.content-section');
+        // 将所有内容部分设置为 'inactive'（隐藏）
+        sections.forEach(function(section) {
+            section.classList.remove('active');
+            section.classList.add('inactive');
+        });
 
-        <script>
-            // JavaScript 控制内容显示和隐藏
-            function showSection(sectionId) {
-                // 获取所有内容部分
-                var sections = document.querySelectorAll('.content-section');
-                // 将所有内容部分设置为 'inactive'（隐藏）
-                sections.forEach(function(section) {
-                    section.classList.remove('active');
-                    section.classList.add('inactive');
-                });
+        // 显示当前选中的部分
+        var activeSection = document.getElementById(sectionId);
+        activeSection.classList.remove('inactive');
+        activeSection.classList.add('active');
+    }
+</script>
 
-                // 显示当前选中的部分
-                var activeSection = document.getElementById(sectionId);
-                activeSection.classList.remove('inactive');
-                activeSection.classList.add('active');
-            }
-        </script>
-
-    </body>
+</body>
 </html>
