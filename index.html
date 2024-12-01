@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nothing</title>
+    <title>My Personal Website</title>
     <style>
         /* 基本样式 */
         body {
@@ -58,8 +58,7 @@
             margin: 0 auto;
             padding-top: 20px;
             position: relative;
-            overflow: hidden;
-            height: auto;
+            height: 300px; /* 确保容器有足够的高度容纳内容 */
         }
 
         /* 内容部分的基本样式 */
@@ -67,10 +66,9 @@
             position: absolute;
             top: 0;
             left: 100%; /* 初始状态位于右侧之外 */
-            right: 0;
+            width: 100%;
             opacity: 0;
             transition: transform 0.5s ease, opacity 0.5s ease;
-            width: 100%;
         }
 
         /* 内容部分显示时 */
